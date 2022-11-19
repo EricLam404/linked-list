@@ -2,8 +2,8 @@ import Node from "./node";
 
 
 class LinkedList {
-    constructor(data){
-        this.current = data;
+    constructor(node){
+        this.current = node;
     }
     
     append(value){
@@ -94,10 +94,26 @@ class LinkedList {
         let now = this.current;
         let str = `(${$now.value}) -> `;
         while(now.nextNode != null){
-            now = now.newNode;
+            now = now.nextNode;
             str += `(${$now.value}) -> `;
         }
         str = str.substring(0, str.length - 4);
         console.log(str);
     }
+    insertAt(value, index){
+        let i = 1;
+        let now = this.current;
+        while(i != index){
+            if(now.nextNode == null){
+                return -1;
+            }
+            now = now.nextNode;
+            i++
+        }
+        const newNode = new Node(value);
+        newNode.nextNode = now.nextNode;
+        now.newNode = newNode
+        return now;
+    }
+    
 }

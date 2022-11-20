@@ -100,6 +100,7 @@ class LinkedList {
         str = str.substring(0, str.length - 4);
         console.log(str);
     }
+
     insertAt(value, index){
         let i = 1;
         let now = this.current;
@@ -112,8 +113,21 @@ class LinkedList {
         }
         const newNode = new Node(value);
         newNode.nextNode = now.nextNode;
-        now.newNode = newNode
+        now.newNode = newNode;
         return now;
     }
-    
+    removeAt(index){
+        let i = 1;
+        let now = this.current;
+        while(i != index){
+            if(now.nextNode == null){
+                return -1;
+            }
+            now = now.nextNode;
+            i++
+        }
+        const newNode = now.nextNode;;
+        now.current = newNode;
+        return now;
+    }
 }
